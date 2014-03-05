@@ -1,0 +1,22 @@
+directory: ~/Music/Beets
+library: ~/musiclibrary.blb
+
+color: yes
+
+import:
+    write: yes
+    copy: yes
+    move: no
+
+paths:
+    default: $albumartist/$album%aunique{}/$track $title
+    singleton: Non-Album/$artist/$title
+    comp: Compilations/$album%aunique{}/$track $title
+
+plugins: fetchart embedart
+
+match:
+    preferred:
+        countries: ['US', 'GB|UK']
+        media: ['CD', 'Digital Media|File']
+        original_year: yes
