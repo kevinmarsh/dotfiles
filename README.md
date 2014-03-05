@@ -1,4 +1,4 @@
 dotfiles
 ========
 
-Dirs starting with "_" should be symlinked to "." files while those without should be symlinked to dirs.
+Some dotfiles to help make backup and cross computer sync. Need to build a script to automate the symlink process.
