@@ -1,0 +1,19 @@
+.hg/*
+.git/*
+
+*.bak
+*.rej
+
+# stupid OSX artifacts
+.DS_Store
+
+# vim undo file
+*.un~
+Session.vim
+
+# SublimeText
+*.sublime-workspace
+*.sublime-project
+
+.sass-cache
+*.pyc
