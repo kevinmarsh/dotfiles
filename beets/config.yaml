@@ -1,27 +1,50 @@
-directory: ~/Music/Beets
-library: ~/musiclibrary.blb
+# Path to the beets library file
+# library: library.db
+
+# Directory to which files will be copied/moved when adding them to the library
+directory: ~/Music_beets
+
+plugins: fetchart embedart fromfilename mbsync scrub
+
+scrub:
+	auto: yes
+
+# threaded speeds things up but may cause crashes
+threaded: yes
 
 color: yes
 
+list_format_item: $artist - $album - $track - $title
+list_format_album: $albumartist - $album [$original_year]
+
 import:
-    write: yes
-    copy: yes
-    move: no
+	move: yes
+	copy: no
+	write: yes
 
-paths:
-    default: $albumartist/$album%aunique{}/$track $title
-    singleton: Non-Album/$artist/$title
-    comp: Compilations/$album%aunique{}/$track $title
+	# Controls whether interrupted imports should be resumed
+	resume: ask
 
-plugins: fetchart embedart
+	# Specifies a filename where the importer’s log should be kept
+	log: ~/.config/beets/imported-beets.log
 
-clutter: ['Thumbs.db', '.DS_Store', '*.log', '*.txt', '*.cue']
+	# A list of locale names to search for preferred aliases
+	languages: ['en']
 
 match:
-    preferred:
-        countries: ['US', 'GB|UK']
-        media: ['CD', 'Digital Media|File']
-        original_year: yes
+	preferred:
+		countries: ['US', 'GB|UK']
+		media: ['CD', 'Digital Media|File']
+		original_year: yes
+
+
+paths:
+	default: $albumartist/$album%aunique{}/$albumartist $track $title
+	singleton: Non-Album/$artist/$title
+	comp: Compilations/$album%aunique{}/$albumartist $track $title
+	albumtype:soundtrack: Soundtracks/$album/$track $title
+
+
 
 
 # Tip: If you are about to import all of your music you and you have enough space
@@ -32,10 +55,10 @@ match:
 # 2. enable whatever plugins you want (atleast: chroma fromfilename fetchart)
 # 3. Set up config (uncomment below)
 
-# directory: ~/Music
+# directory: ~/Music_beets
 # import:
 #     move: yes
 #     quiet_fallback: skip
-#     log: ~/.beets/imported-beets.log
+#     log: ~/.config/beets/imported-beets.log
 
 # 4. `$ beet import -q ~/ImportMusic`
