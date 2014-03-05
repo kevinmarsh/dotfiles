@@ -15,8 +15,27 @@ paths:
 
 plugins: fetchart embedart
 
+clutter: ['Thumbs.db', '.DS_Store', '*.log', '*.txt', '*.cue']
+
 match:
     preferred:
         countries: ['US', 'GB|UK']
         media: ['CD', 'Digital Media|File']
         original_year: yes
+
+
+# Tip: If you are about to import all of your music you and you have enough space
+# you can save some of the tedium by doing a quiet import initially:
+# https://news.ycombinator.com/item?id=7337597
+#
+# 1. Optional: `$ cp -r ~/Music ~/ImportMusic ; mv ~/Music ~/Music.orig`
+# 2. enable whatever plugins you want (atleast: chroma fromfilename fetchart)
+# 3. Set up config (uncomment below)
+
+# directory: ~/Music
+# import:
+#     move: yes
+#     quiet_fallback: skip
+#     log: ~/.beets/imported-beets.log
+
+# 4. `$ beet import -q ~/ImportMusic`
