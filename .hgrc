@@ -5,7 +5,7 @@
 color=
 graphlog=
 record= 
-crecord= 
+crecord=~/.hgext/crecord/
 rebase= 
 hgext.mq=
 hgshelve=~/.hgext/hgshelve.py 
