@@ -1,0 +1,22 @@
+syntax: glob
+
+*.bak
+*.db
+*.diff
+*.i
+*.orig
+*.pyc
+*.rej
+*.swp
+*.sublime-project
+*.sublime-workspace
+*.un~
+
+*.Trash*
+*.fuse_hidden*
+
+.svn/*
+.git/*
+.hg/*
+
+.jshintrc

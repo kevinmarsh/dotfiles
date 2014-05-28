@@ -1,6 +1,9 @@
 # Keep my email address out of the public repo
 %include ~/.hgrc.private
 
+[ui]
+ignore = ~/.hgignore
+
 [extensions]
 color=
 graphlog=
