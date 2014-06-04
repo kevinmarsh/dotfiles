@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-Some dotfiles to help make backup and cross computer sync.
+Some dotfiles to help make backup and cross computer sync easier.
 
 Installation
 ------------
