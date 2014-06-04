@@ -7,7 +7,7 @@
 # 3. Creates private .gitconfig and .hgrc files
 ################################################################################
 
-homedir=~/
+homedir=~
 dotfilesdir=~/dotfiles
 backupdir=$homedir/dotfiles_old
 
@@ -36,7 +36,7 @@ if [ ! -f $privategit ]; then
     echo -n "What is your full name? "
     read gitname
 
-    echo -e "[user]\n\temail = $gitemail\n\t$gitname" > $privategit
+    echo -e "[user]\n\temail = $gitemail\n\tname = $gitname" > $privategit
 fi
 
 
@@ -57,5 +57,5 @@ if [ ! -f $privatehg ]; then
         read hgrcname
     fi
 
-    echo -e "[user]\n\tusername = $hgrcname <$hgrcemail>" > $privatehg
+    echo -e "[user]\nusername = $hgrcname <$hgrcemail>" > $privatehg
 fi
