@@ -128,7 +128,7 @@ PATH=$PATH:/usr/local/heroku/bin
 # Python virtual environments
 ################################################################################
 # Adding var for virtualenvwrapper
-WORKON_HOME=~/Envs
+WORKON_HOME=~/.virtualenvs
 
 # Build the source file for virtualenvwrapper
 source /usr/local/bin/virtualenvwrapper.sh
