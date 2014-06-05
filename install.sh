@@ -57,5 +57,5 @@ if [ ! -f $privatehg ]; then
         read hgrcname
     fi
 
-    echo -e "[user]\nusername = $hgrcname <$hgrcemail>" > $privatehg
+    echo -e "[ui]\nusername = $hgrcname <$hgrcemail>" > $privatehg
 fi
