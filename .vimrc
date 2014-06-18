@@ -1,46 +1,25 @@
-" Beginners .vimrc
-" v0.1 2012-10-22 Philip Thrasher
-"
-" Important things for beginners:
-" * Start out small... Don't jam your vimrc full of things you're not ready to
-"   immediately use.
-" * Read other people's vimrc's.
-" * Use a plugin manager for christ's sake! (I highly recommend vundle)
-" * Spend time configuring your editor... It's important. Its the tool you
-"   spend 8 hours a day crafting your reputation.
-" * remap stupid things to new keys that make you more efficient.
-" * Don't listen to the haters that complain about using non-default
-"   key-bindings. Their argument is weak. I spend most of my time in the editor
-"   on my computer, not others, so I don't care if customizing vim means I'll
-"   have a harder time using remote vim.
-"
-" Below I've left some suggestions of good default settings to have in a bare
-" minimal vimrc. You only what you want to use, and nothing more. I've heavily
-" commented each, and these are what I consider bare necessities, my workflow
-" absolutely depends on these things.
-"
-" If you have any questions, email me at pthrash@me.com
+" Sources
+"   v0.1 2012-10-22 Philip Thrasher
+"   http://winged.ch/vim-auto-install-for-vundle.html
 
-" Setup Vundle:
-" For this to work, you must install the vundle plugin manually.
-" https://github.com/gmarik/vundle
-" To install vundle, copy all the files from the repo into your respective
-" folders within ~/.vim
-
-" Use Vim rather then Vi settings
-set nocompatible " Fuck VI... That's for grandpas.
+set nocompatible
 filetype off
+
+" If vundle is not installed, do it first
+let fresh_install=0
+let vundle_dir=expand("$HOME/.vim/bundle/vundle")
+if (!isdirectory(vundle_dir))
+    call system(expand("mkdir -p $HOME/.vim/bundle"))
+    call system(expand("git clone git@github.com:gmarik/vundle $HOME/.vim/bundle/vundle"))
+    let fresh_install=1
+endif
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Specify the bundle in the following format:
-" Bundle 'githubUsername/repoName'
-
 " Let vundle manage itself:
 Bundle 'gmarik/vundle'
 
-" Just a shitload of color schemes.
 Bundle 'flazz/vim-colorschemes'
 
 " Fuzzy finder
@@ -52,8 +31,7 @@ Bundle 'tpope/vim-commentary'
 " Proper JSON filetype detection, and support.
 Bundle 'leshill/vim-json'
 
-" vim already has syntax support for javascript, but the indent support is
-" horrid. This fixes that.
+" vim already has syntax support for javascript, but the indent support is horrid. This fixes that.
 Bundle 'pangloss/vim-javascript'
 
 " vim indents HTML very poorly on it's own. This fixes a lot of that.
@@ -62,6 +40,10 @@ Bundle 'indenthtml.vim'
 " I write markdown a lot. This is a good syntax.
 Bundle 'tpope/vim-markdown'
 
+" Put all Bundles above this point since we're calling to install them below
+if fresh_install == 1
+    :BundleInstall
+endif
 
 " We have to turn this stuff back on if we want all of our features.
 filetype plugin indent on " Filetype auto-detection
