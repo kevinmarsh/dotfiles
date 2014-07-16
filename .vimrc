@@ -1,6 +1,7 @@
 " Sources
-"   v0.1 2012-10-22 Philip Thrasher
+"   https://gist.github.com/pthrasher/3933522
 "   http://winged.ch/vim-auto-install-for-vundle.html
+"   https://github.com/r00k/dotfiles/blob/master/vimrc
 
 set nocompatible
 filetype off
@@ -14,28 +15,33 @@ if (!isdirectory(vundle_dir))
     let fresh_install=1
 endif
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
 
-Bundle 'gmarik/vundle' " Let vundle manage itself
-Bundle 'flazz/vim-colorschemes'
-Bundle 'kien/ctrlp.vim' " Fuzzy finder like sublime text
-Bundle 'tpope/vim-commentary' " Support for easily toggling comments.
-Bundle 'leshill/vim-json' " Proper JSON filetype detection, and support.
-Bundle 'pangloss/vim-javascript' " vim already has syntax support for javascript, but the indent support is horrid. This fixes that.
-Bundle 'indenthtml.vim' " vim indents HTML very poorly on it's own. This fixes a lot of that.
-Bundle 'tpope/vim-markdown'
+" let Vundle manage Vundle, required
+Plugin 'gmarik/vundle'
 
-" Put all Bundles above this point since we're calling to install them below
+Plugin 'flazz/vim-colorschemes'
+Plugin 'indenthtml.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'leshill/vim-json'
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-markdown'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Now install the Plugins if it is a new build
 if fresh_install == 1
     :BundleInstall
 endif
 
-" We have to turn this stuff back on if we want all of our features.
-filetype plugin indent on " Filetype auto-detection
+
 syntax on " Syntax highlighting
 
-:set number " Show line numbers
+set number " Show line numbers
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set tabstop=4
 set shiftwidth=4
@@ -46,10 +52,10 @@ set shiftround " tab / shifting moves to closest tabstop.
 set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
 
-" We have VCS -- we don't need this stuff.
-set nobackup " We have vcs, we don't need backups.
-set nowritebackup " We have vcs, we don't need backups.
-set noswapfile " They're just annoying. Who likes them?
+set backupdir=~/.tmp
+set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files
+set noswapfile
+
 
 " don't nag me when hiding buffers
 set hidden " allow me to have buffers with unsaved changes.
