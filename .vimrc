@@ -17,27 +17,13 @@ endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Let vundle manage itself:
-Bundle 'gmarik/vundle'
-
+Bundle 'gmarik/vundle' " Let vundle manage itself
 Bundle 'flazz/vim-colorschemes'
-
-" Fuzzy finder
-Bundle 'kien/ctrlp.vim'
-
-" Support for easily toggling comments.
-Bundle 'tpope/vim-commentary'
-
-" Proper JSON filetype detection, and support.
-Bundle 'leshill/vim-json'
-
-" vim already has syntax support for javascript, but the indent support is horrid. This fixes that.
-Bundle 'pangloss/vim-javascript'
-
-" vim indents HTML very poorly on it's own. This fixes a lot of that.
-Bundle 'indenthtml.vim'
-
-" I write markdown a lot. This is a good syntax.
+Bundle 'kien/ctrlp.vim' " Fuzzy finder like sublime text
+Bundle 'tpope/vim-commentary' " Support for easily toggling comments.
+Bundle 'leshill/vim-json' " Proper JSON filetype detection, and support.
+Bundle 'pangloss/vim-javascript' " vim already has syntax support for javascript, but the indent support is horrid. This fixes that.
+Bundle 'indenthtml.vim' " vim indents HTML very poorly on it's own. This fixes a lot of that.
 Bundle 'tpope/vim-markdown'
 
 " Put all Bundles above this point since we're calling to install them below
@@ -49,6 +35,8 @@ endif
 filetype plugin indent on " Filetype auto-detection
 syntax on " Syntax highlighting
 
+:set number " Show line numbers
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -82,16 +70,12 @@ set virtualedit+=block
 " You'll see it a lot below as <leader>
 let mapleader = ","
 
-
 " So we don't have to press shift when we want to get into command mode.
 nnoremap ; :
 vnoremap ; :
 
 " So we don't have to reach for escape to leave insert mode.
 inoremap jf <esc>
-
-" create new vsplit, and switch to it.
-noremap <leader>v <C-w>v
 
 " bindings for easy split nav
 nnoremap <C-h> <C-w>h
@@ -117,25 +101,12 @@ noremap j gj
 noremap k gk
 
 " Plugin settings:
-" Below are some 'sane' (IMHO) defaults for a couple of the above plugins I
-" referenced.
 
 " Map the key for toggling comments with vim-commentary
 nnoremap <leader>c <Plug>CommentaryLine
 
-" Remap ctrlp to ctrl-t -- map it however you like, or stick with the
-" defaults. Additionally, in my OS, I remap caps lock to control. I never use
-" caps lock. This is highly recommended.
-" let g:ctrlp_map = '<c-t>'
-
 " Let ctrlp have up to 30 results.
 let g:ctrlp_max_height = 30
 
-
-" Finally the color scheme. Choose whichever you want from the list in the
-" link above (back up where we included the bundle of a ton of themes.)
 set background=dark
 colorscheme desert 
-
-" Show line numbers
-:set number
