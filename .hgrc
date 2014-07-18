@@ -2,7 +2,9 @@
 %include ~/.hgrc.private
 
 [ui]
-ignore = ~/.hgignore
+ignore=~/.hgignore
+merge=internal:merge
+style =  ~/dotfiles/hg_templates/map-cmdline.colorcompact
 
 [extensions]
 color=
@@ -16,8 +18,8 @@ progress=
 pager=
 
 [pager]
-pager = LESS='FSRX' less
-ignore = version, help, update, serve, record
+pager=LESS='FSRX' less
+ignore=version, help, update, serve, record
 
 # See http://mercurial.selenic.com/wiki/MergingWithVim
 [merge.tools]
