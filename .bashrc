@@ -136,3 +136,11 @@ WORKON_HOME=~/.virtualenvs
 # Build the source file for virtualenvwrapper
 source /usr/local/bin/virtualenvwrapper.sh
 
+
+################################################################################
+# Load local or private bashrc overrides
+################################################################################
+if [ -f ~/.bashrc_private ]; then
+    . ~/.bashrc_private
+fi
+
