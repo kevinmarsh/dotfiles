@@ -10,20 +10,28 @@
 homedir=~
 dotfilesdir=~/dotfiles
 backupdir=$homedir/dotfiles_old
+trackedfiles=/tmp/trackedfiles
+
+# Ensure that we only symlink files that are tracked
+git ls-tree -r master --name-only > $trackedfiles
 
 # Exclude the readme, git repo and "this" dir names in the files
-files=`ls -a $dotfilesdir | grep -Ev 'README.md|install.sh|^\.git$|\.$'`
+files=`ls -A $dotfilesdir | grep -Ev 'README.md|install.sh|^\.git$|\.$'`
 
 echo "Creating $backupdir for backup of any existing dotfiles in $homedir"
 mkdir -p $backupdir
 
 for file in $files; do
-    if [ -e $homedir/$file ]; then
-        echo "Moving $file to $backupdir/$file"
-        mv $homedir/$file $backupdir/
+    if grep -q '^'$file'$' $trackedfiles; then
+        if [ -e $homedir/$file ]; then
+            echo "Moving $file to $backupdir/$file"
+            mv $homedir/$file $backupdir/
+        fi
+        echo "Creating symlink to $file in home directory."
+        ln -s $dotfilesdir/$file $homedir/$file
+    else
+        echo "$file was skipped since it's not tracked in the repo"
     fi
-    echo "Creating symlink to $file in home directory."
-    ln -s $dotfilesdir/$file $homedir/$file
 done
 
 
@@ -59,3 +67,5 @@ if [ ! -f $privatehg ]; then
 
     echo -e "[ui]\nusername = $hgrcname <$hgrcemail>" > $privatehg
 fi
+
+rm $trackedfiles
