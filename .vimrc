@@ -52,8 +52,12 @@ set shiftround " tab / shifting moves to closest tabstop.
 set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
 
-set backupdir=~/.tmp
-set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files
+let tmp_dir=expand("$HOME/.tmp")
+if (!isdirectory(tmp_dir))
+    call system(expand("mkdir -p $HOME/.tmp"))
+endif
+set backupdir=tmp_dir
+set directory=tmp_dir " Don't clutter my dirs up with swp and tmp files
 set noswapfile
 
 
