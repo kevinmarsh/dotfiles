@@ -11,7 +11,7 @@ let fresh_install=0
 let vundle_dir=expand("$HOME/.vim/bundle/vundle")
 if (!isdirectory(vundle_dir))
     call system(expand("mkdir -p $HOME/.vim/bundle"))
-    call system(expand("git clone git@github.com:gmarik/vundle $HOME/.vim/bundle/vundle"))
+    call system(expand("git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/vundle"))
     let fresh_install=1
 endif
 
