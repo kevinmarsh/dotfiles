@@ -51,6 +51,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# ensure that vim is the default editor
+export EDITOR=/usr/bin/vim
 
 ################################################################################
 # Color
