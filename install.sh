@@ -7,9 +7,8 @@
 # 3. Creates private .gitconfig and .hgrc files
 ################################################################################
 
-homedir=~
-dotfilesdir=~/dotfiles
-backupdir=$homedir/dotfiles_old
+dotfilesdir=$HOME/dotfiles
+backupdir=$HOME/dotfiles_old
 trackedfiles=/tmp/trackedfiles
 
 # Ensure that we only symlink files that are tracked
@@ -18,17 +17,17 @@ git ls-tree -r master --name-only > $trackedfiles
 # Exclude the readme, git repo and "this" dir names in the files
 files=`ls -A $dotfilesdir | grep -Ev 'README.md|install.sh|^\.git$|\.$'`
 
-echo "Creating $backupdir for backup of any existing dotfiles in $homedir"
+echo "Creating $backupdir for backup of any existing dotfiles in $HOME"
 mkdir -p $backupdir
 
 for file in $files; do
     if grep -q '^'$file'$' $trackedfiles; then
-        if [ -e $homedir/$file ]; then
+        if [ -e $HOME/$file ]; then
             echo "Moving $file to $backupdir/$file"
-            mv $homedir/$file $backupdir/
+            mv $HOME/$file $backupdir/
         fi
         echo "Creating symlink to $file in home directory."
-        ln -s $dotfilesdir/$file $homedir/$file
+        ln -s $dotfilesdir/$file $HOME/$file
     else
         echo "$file was skipped since it's not tracked in the repo"
     fi
@@ -36,7 +35,7 @@ done
 
 
 # Create a .gitconfig.private file if it doesn't exist
-privategit=$homedir/.gitconfig.private
+privategit=$HOME/.gitconfig.private
 if [ ! -f $privategit ]; then
     echo -e "\n\nSetting up $privategit"
     echo -n "What is your email? "
@@ -49,7 +48,7 @@ fi
 
 
 # Create a .hgrc.private file if it doesn't exist
-privatehg=$homedir/.hgrc.private
+privatehg=$HOME/.hgrc.private
 if [ ! -f $privatehg ]; then
     echo -e "\n\nSetting up $privatehg"
 
