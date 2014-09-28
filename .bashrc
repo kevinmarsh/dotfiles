@@ -135,9 +135,10 @@ PATH=$PATH:/usr/local/heroku/bin
 # Adding var for virtualenvwrapper
 WORKON_HOME=~/.virtualenvs
 
-# Build the source file for virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
-
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    # Build the source file for virtualenvwrapper
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 ################################################################################
 # Load local or private bashrc overrides
