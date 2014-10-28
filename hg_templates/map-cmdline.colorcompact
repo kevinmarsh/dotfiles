@@ -1,4 +1,4 @@
-changeset = '\x1B[32m{rev} \x1B[31m{tags}{bookmarks}\x1b[0m{parents}   {node|short}   \x1B[32m{branch}\x1b[0m   {date|isodate}   \x1B[33m{author|user}\x1b[0m\n  {desc|firstline|strip}\n\n'
+changeset = '\x1B[32m{rev} \x1B[31m{tags}{bookmarks}\x1b[0m{parents}   {node|short}   \x1B[32m{branch}\x1b[0m   {ifeq(phase, 'public', '','\x1B[31m{phase}\x1b[0m   ')}{date|isodate}   \x1B[33m{author|user}\x1b[0m\n  {desc|firstline|strip}\n\n'
 changeset_quiet = '{rev}:{node|short}\n'
 changeset_verbose = '{rev}{tags}{parents}   {node|short}   {date|isodate}   {author}\n  {desc|strip}\n\n'
 
