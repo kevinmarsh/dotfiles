@@ -4,16 +4,16 @@
 [ui]
 ignore=~/.hgignore
 merge=internal:merge
-style =  ~/dotfiles/hg_templates/map-cmdline.colorcompact
+style= ~/dotfiles/hg_templates/map-cmdline.colorcompact
 
 [extensions]
 color=
 graphlog=
-record= 
+record=
 crecord=~/.hgext/crecord/
-rebase= 
+rebase=
 hgext.mq=
-hgshelve=~/.hgext/hgshelve.py 
+hgshelve=~/.hgext/hgshelve.py
 progress=
 pager=
 
@@ -33,7 +33,9 @@ unified = 5
 showfunc = 1
 
 [alias]
-qstatus = status --rev qparent:.
-qshelve = shelve --all -n qtemp
-qunshelve = unshelve -n qtemp
+qstatus=status --rev qparent:.
+qshelve=shelve --all -n qtemp
+qunshelve=unshelve -n qtemp
 
+secret=phase -fs
+draft=phase -d
