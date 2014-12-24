@@ -55,12 +55,12 @@ set smartindent " Intellegently dedent / indent new lines based on rules.
 set laststatus=2
 set statusline=%F%m%r%h%w\ (%Y)\%=[%l/%L,%v][%p%%]
 
-let tmp_dir=expand("$HOME/.tmp")
-if (!isdirectory(tmp_dir))
+if (!isdirectory(expand("$HOME/.tmp")))
     call system(expand("mkdir -p $HOME/.tmp"))
 endif
-set backupdir=tmp_dir
-set directory=tmp_dir " Don't clutter my dirs up with swp and tmp files
+" Don't clutter my dirs up with swp and tmp files
+set backupdir=$HOME/.tmp,/tmp
+set directory=$HOME/.tmp,/tmp
 set noswapfile
 
 
