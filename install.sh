@@ -7,29 +7,22 @@
 # 3. Creates private .gitconfig and .hgrc files
 ################################################################################
 
-dotfilesdir=$HOME/dotfiles
+dotfilesdir=dotfiles
 backupdir=$HOME/dotfiles_old
-trackedfiles=/tmp/trackedfiles
 
-# Ensure that we only symlink files that are tracked
-git ls-tree -r master --name-only > $trackedfiles
-
-# Exclude the readme, git repo and "this" dir names in the files
-files=`ls -A $dotfilesdir | grep -Ev 'README.md|install.sh|^\.git$|\.$'`
 
 echo "Creating $backupdir for backup of any existing dotfiles in $HOME"
 mkdir -p $backupdir
 
-for file in $files; do
-    if grep -q '^'$file'$' $trackedfiles; then
+for file in `git ls-tree -r master --name-only`; do
+    if [[ "$file" != "README.md" && "$file" != "install.sh" ]]; then
         if [ -e $HOME/$file ]; then
             echo "Moving $file to $backupdir/$file"
             mv $HOME/$file $backupdir/
         fi
         echo "Creating symlink to $file in home directory."
-        ln -s $dotfilesdir/$file $HOME/$file
-    else
-        echo "$file was skipped since it's not tracked in the repo"
+        cp --parents $file $HOME
+        ln -sf $HOME/$dotfilesdir/$file $HOME/$file
     fi
 done
 
@@ -66,5 +59,3 @@ if [ ! -f $privatehg ]; then
 
     echo -e "[ui]\nusername = $hgrcname <$hgrcemail>" > $privatehg
 fi
-
-rm $trackedfiles
