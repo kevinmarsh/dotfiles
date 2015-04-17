@@ -122,20 +122,23 @@ fi
 ################################################################################
 # Add paths
 ################################################################################
-# Google App Engine
-PATH=$PATH:/opt/google_appengine/
+if [ -f /opt/google_appengine/ ]; then
+    # Google App Engine
+    PATH=$PATH:/opt/google_appengine/
+fi
 
-# Heroku Toolbelt
-PATH=$PATH:/usr/local/heroku/bin
+if [ -f /usr/local/heroku/bin ]; then
+    # Heroku Toolbelt
+    PATH=$PATH:/usr/local/heroku/bin
+fi
 
 
 ################################################################################
 # Python virtual environments
 ################################################################################
-# Adding var for virtualenvwrapper
-WORKON_HOME=~/.virtualenvs
 
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    WORKON_HOME=~/.virtualenvs
     # Build the source file for virtualenvwrapper
     source /usr/local/bin/virtualenvwrapper.sh
 fi
