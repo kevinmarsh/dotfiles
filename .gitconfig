@@ -28,6 +28,9 @@
 [push]
 	default = simple
 
+[pager]
+	status = true
+
 # Keep my email address out of the public repo
 [include]
 	path = ~/.gitconfig.private
