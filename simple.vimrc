@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " list of installed plugins
 Plugin 'sickill/vim-monokai'
+Plugin 'airblade/vim-gitgutter'
 
 " all of your Plugins must be added before the following line
 call vundle#end()             " required for vundle
@@ -31,6 +32,7 @@ filetype indent on            " load filetype-specific indent files
 
 set number                    " show line numbers
 set cursorline                " highlight current line
+set colorcolumn=80
 set showmatch                 " highlight matching [{()}]
 
 " =============================================================================
@@ -59,3 +61,9 @@ nnoremap <space> za
 set wildmenu                  " visual autocomplete for command menu
 
 set lazyredraw                " redraw only when we need to.
+
+" disable the arrows to avoid bad habits
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
