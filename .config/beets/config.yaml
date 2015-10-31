@@ -2,47 +2,48 @@
 # library: library.db
 
 # Directory to which files will be copied/moved when adding them to the library
-directory: ~/Music_beets
+directory: ~/Music/Imported
 
-plugins: fetchart embedart fromfilename mbsync scrub
+plugins: fetchart embedart fromfilename mbsync scrub thumbnails
 
 scrub:
-	auto: yes
+    auto: yes
 
 # threaded speeds things up but may cause crashes
 threaded: yes
 
-color: yes
+ui:
+    color: yes
 
-list_format_item: $artist - $album - $track - $title
-list_format_album: $albumartist - $album [$original_year]
+format_item: $artist - $album - $track - $title
+format_album: $albumartist - $album [$original_year]
 
 import:
-	move: yes
-	copy: no
-	write: yes
+    move: yes
+    copy: no
+    write: yes
 
-	# Controls whether interrupted imports should be resumed
-	resume: ask
+    # Controls whether interrupted imports should be resumed
+    resume: ask
 
-	# Specifies a filename where the importer’s log should be kept
-	log: ~/.config/beets/imported-beets.log
+    # Specifies a filename where the importer’s log should be kept
+    log: ~/.config/beets/imported-beets.log
 
-	# A list of locale names to search for preferred aliases
-	languages: ['en']
+    # A list of locale names to search for preferred aliases
+    languages: ['en']
 
 match:
-	preferred:
-		countries: ['US', 'GB|UK']
-		media: ['CD', 'Digital Media|File']
-		original_year: yes
+    preferred:
+        countries: ['US', 'GB|UK', 'CA']
+        media: ['CD', 'Digital Media|File']
+        original_year: yes
 
 
 paths:
-	default: $albumartist/$album%aunique{}/$albumartist $track $title
-	singleton: Non-Album/$artist/$title
-	comp: Compilations/$album%aunique{}/$albumartist $track $title
-	albumtype:soundtrack: Soundtracks/$album/$track $title
+    default: $albumartist/$album%aunique{}/$albumartist $track $title
+    singleton: Non-Album/$artist/$title
+    comp: Compilations/$album%aunique{}/$albumartist $track $title
+    albumtype:soundtrack: Soundtracks/$album/$track $title
 
 
 
