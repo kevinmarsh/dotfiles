@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " list of installed plugins
 Plugin 'sickill/vim-monokai'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
 
 " all of your Plugins must be added before the following line
 call vundle#end()             " required for vundle
@@ -71,3 +71,8 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" signify plugin settings
+let g:signify_vcs_list = [ 'hg', 'git' ]
+nmap <leader>gj <plug>(signify-next-hunk)                                                                                                     
+nmap <leader>gk <plug>(signify-prev-hunk)
