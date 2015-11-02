@@ -1,125 +1,78 @@
-" Sources
-"   https://gist.github.com/pthrasher/3933522
-"   http://winged.ch/vim-auto-install-for-vundle.html
-"   https://github.com/r00k/dotfiles/blob/master/vimrc
+" =============================================================================
+" Vundle and Plugins
+" =============================================================================
+set nocompatible              " be iMproved, required for vundle
+filetype off                  " required for vundle
 
-set nocompatible
-filetype off
-
-" If vundle is not installed, do it first
-let fresh_install=0
-let vundle_dir=expand("$HOME/.vim/bundle/vundle")
-if (!isdirectory(vundle_dir))
-    call system(expand("mkdir -p $HOME/.vim/bundle"))
-    call system(expand("git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/vundle"))
-    let fresh_install=1
-endif
-
-set rtp+=~/.vim/bundle/vundle
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+" let Vundle manage Vundle, required for vundle
+Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'flazz/vim-colorschemes'
-Plugin 'indenthtml.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'leshill/vim-json'
-Plugin 'pangloss/vim-javascript'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-markdown'
+" list of installed plugins
+Plugin 'sickill/vim-monokai'
+Plugin 'mhinz/vim-signify'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" all of your Plugins must be added before the following line
+call vundle#end()             " required for vundle
+filetype plugin indent on     " required for vundle
 
-" Now install the Plugins if it is a new build
-if fresh_install == 1
-    :BundleInstall
-endif
+" =============================================================================
+" UI and Colours
+" =============================================================================
+syntax enable                 " enable syntax processing
+set background=dark           " setting dark mode
+colorscheme monokai
 
+set tabstop=4                 " number of visual spaces per TAB
+set softtabstop=4             " number of spaces in tab when editing
+filetype indent on            " load filetype-specific indent files
 
-syntax on " Syntax highlighting
+set number                    " show line numbers
+set cursorline                " highlight current line
+set colorcolumn=80
+set showmatch                 " highlight matching [{()}]
 
-set number " Show line numbers
-set backspace=indent,eol,start " allow backspacing over everything in insert mode
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab " use spaces instead of tabs.
-set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
-set shiftround " tab / shifting moves to closest tabstop.
-set autoindent " Match indents on new lines.
-set smartindent " Intellegently dedent / indent new lines based on rules.
+" show tabs and eol chars
+set listchars=tab:▸\ ,eol:¬
+set list
 
-set laststatus=2
-set statusline=%F%m%r%h%w\ (%Y)\%=[%l/%L,%v][%p%%]
+" =============================================================================
+" Search
+" =============================================================================
+set incsearch                 " search as characters are entered
+set hlsearch                  " highlight matches
 
-if (!isdirectory(expand("$HOME/.tmp")))
-    call system(expand("mkdir -p $HOME/.tmp"))
-endif
-" Don't clutter my dirs up with swp and tmp files
-set backupdir=$HOME/.tmp,/tmp
-set directory=$HOME/.tmp,/tmp
-set noswapfile
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
 
+" =============================================================================
+" Code Folding
+" =============================================================================
+set foldenable                " enable folding
+set foldlevelstart=10         " open most folds by default
+set foldnestmax=10            " 10 nested fold max
+set foldmethod=indent         " fold based on indent level
 
-" don't nag me when hiding buffers
-set hidden " allow me to have buffers with unsaved changes.
-set autoread " when a file has changed on disk, just load it. Don't ask.
+" space open/closes folds
+nnoremap <space> za
 
-" Make search more sane
-set ignorecase " case insensitive search
-set smartcase " If there are uppercase letters, become case-sensitive.
-set incsearch " live incremental searching
-set showmatch " live match highlighting
-set hlsearch " highlight matches
-set gdefault " use the `g` flag by default.
+" =============================================================================
+" Other
+" =============================================================================
+set wildmenu                  " visual autocomplete for command menu
 
-" allow the cursor to go anywhere in visual block mode.
-set virtualedit+=block
+set lazyredraw                " redraw only when we need to.
 
-" leader is a key that allows you to have your own "namespace" of keybindings.
-" You'll see it a lot below as <leader>
-let mapleader = ","
+" disable the arrows to avoid bad habits
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
-" So we don't have to press shift when we want to get into command mode.
-nnoremap ; :
-vnoremap ; :
-
-" So we don't have to reach for escape to leave insert mode.
-inoremap jf <esc>
-
-" bindings for easy split nav
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Use sane regex's when searching
-nnoremap / /\v
-vnoremap / /\v
-
-" Clear match highlighting
-noremap <leader><space> :noh<cr>:call clearmatches()<cr>
-
-" Quick buffer switching - like cmd-tab'ing
-nnoremap <leader><leader> <c-^>
-
-
-" Visual line nav, not real line nav
-" If you wrap lines, vim by default won't let you move down one line to the
-" wrapped portion. This fixes that.
-noremap j gj
-noremap k gk
-
-" Plugin settings:
-
-" Map the key for toggling comments with vim-commentary
-nnoremap <leader>c <Plug>CommentaryLine
-
-" Let ctrlp have up to 30 results.
-let g:ctrlp_max_height = 30
-
-set background=dark
-colorscheme desert 
+" signify plugin settings
+let g:signify_vcs_list = [ 'hg', 'git' ]
+nmap <leader>gj <plug>(signify-next-hunk)                                                                                                     
+nmap <leader>gk <plug>(signify-prev-hunk)
