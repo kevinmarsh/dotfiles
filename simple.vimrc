@@ -35,6 +35,10 @@ set cursorline                " highlight current line
 set colorcolumn=80
 set showmatch                 " highlight matching [{()}]
 
+" show tabs and eol chars
+set listchars=tab:▸\ ,eol:¬
+set list
+
 " =============================================================================
 " Search
 " =============================================================================
