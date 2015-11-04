@@ -56,7 +56,7 @@ fi
 export EDITOR=/usr/bin/vim
 
 # Exclude some file extensions by default
-export GREP_OPTIONS="--exclude=*.{ori,rej,bak}"
+export GREP_OPTIONS="--exclude=*.{orig,rej,bak}"
 
 ################################################################################
 # Color
