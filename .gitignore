@@ -3,9 +3,8 @@
 
 *.bak
 *.rej
-
-# stupid OSX artifacts
-.DS_Store
+*.orig
+*.swp
 
 # vim undo file
 *.un~
