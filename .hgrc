@@ -16,6 +16,7 @@ hgext.mq=
 hgshelve=~/.hgext/hgshelve.py
 progress=
 pager=
+histedit=
 
 [pager]
 pager=LESS='FSRX' less
