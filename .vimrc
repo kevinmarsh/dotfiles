@@ -14,6 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 " list of installed plugins
 Plugin 'sickill/vim-monokai'
 Plugin 'mhinz/vim-signify'
+Plugin 'LnL7/vim-nix'
 
 " all of your Plugins must be added before the following line
 call vundle#end()             " required for vundle
