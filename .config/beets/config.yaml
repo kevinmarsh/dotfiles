@@ -4,7 +4,7 @@
 # Directory to which files will be copied/moved when adding them to the library
 directory: ~/Music/Imported
 
-plugins: fetchart embedart fromfilename mbsync scrub thumbnails
+plugins: fetchart embedart fromfilename mbsync scrub thumbnails chroma
 
 scrub:
     auto: yes
