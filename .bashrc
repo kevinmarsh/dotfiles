@@ -55,8 +55,6 @@ fi
 # ensure that vim is the default editor
 export EDITOR=/usr/bin/vim
 
-# Exclude some file extensions by default
-export GREP_OPTIONS="--exclude=*.{orig,rej,bak,pyc,d,i} --line-number"
 
 ################################################################################
 # Color
@@ -105,14 +103,15 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto --group-directories-first'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
-
-    export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
 fi
 
 
 ################################################################################
 # Load alias definitions.
 ################################################################################
+
+alias grep='grep --color=auto --line-number --exclude=*.{orig,rej,bak,pyc,d,i}'
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
