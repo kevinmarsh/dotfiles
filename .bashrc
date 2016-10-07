@@ -110,7 +110,7 @@ fi
 # Load alias definitions.
 ################################################################################
 
-alias grep='grep --color=auto --line-number --exclude=*.{orig,rej,bak,pyc,d,i}'
+alias grep='grep --color=auto --exclude=*.{orig,rej,bak,pyc,d,i}'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
