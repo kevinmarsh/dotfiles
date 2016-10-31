@@ -123,16 +123,10 @@ fi
 ################################################################################
 # Add paths
 ################################################################################
-if [ -f /opt/google_appengine/ ]; then
-    # Google App Engine
-    PATH=$PATH:/opt/google_appengine/
-fi
 
-if [ -f /usr/local/heroku/bin ]; then
-    # Heroku Toolbelt
-    PATH=$PATH:/usr/local/heroku/bin
+if [ -f $HOME/bin ]; then
+    PATH=$PATH:$HOME/bin
 fi
-
 
 ################################################################################
 # Python virtual environments
