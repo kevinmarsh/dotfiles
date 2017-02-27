@@ -55,8 +55,6 @@ fi
 # ensure that vim is the default editor
 export EDITOR=/usr/bin/vim
 
-# Exclude some file extensions by default
-export GREP_OPTIONS="--exclude=*.{orig,rej,bak}"
 
 ################################################################################
 # Color
@@ -105,14 +103,15 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto --group-directories-first'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
-
-    export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
 fi
 
 
 ################################################################################
 # Load alias definitions.
 ################################################################################
+
+alias grep='grep --color=auto --exclude=*.{orig,rej,bak,pyc,d,i}'
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -124,16 +123,10 @@ fi
 ################################################################################
 # Add paths
 ################################################################################
-if [ -f /opt/google_appengine/ ]; then
-    # Google App Engine
-    PATH=$PATH:/opt/google_appengine/
-fi
 
-if [ -f /usr/local/heroku/bin ]; then
-    # Heroku Toolbelt
-    PATH=$PATH:/usr/local/heroku/bin
+if [ -f $HOME/bin ]; then
+    PATH=$PATH:$HOME/bin
 fi
-
 
 ################################################################################
 # Python virtual environments

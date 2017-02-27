@@ -22,21 +22,11 @@ histedit=
 pager=LESS='FSRX' less
 ignore=version, help, update, serve, record
 
-# See http://mercurial.selenic.com/wiki/MergingWithVim
-[merge.tools]
-vimdiff.executable = vim
-vimdiff.args = -d $base $local $output $other +close +close
-
-# For mq
 [diff]
 git = 1
 unified = 5
 showfunc = 1
 
 [alias]
-qstatus=status --rev qparent:.
-qshelve=shelve --all -n qtemp
-qunshelve=unshelve -n qtemp
-
 secret=phase -fs
 draft=phase -d
