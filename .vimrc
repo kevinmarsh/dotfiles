@@ -14,6 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 " list of installed plugins
 Plugin 'sickill/vim-monokai'
 Plugin 'mhinz/vim-signify'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'LnL7/vim-nix'
 
 " all of your Plugins must be added before the following line
@@ -48,6 +49,10 @@ set hlsearch                  " highlight matches
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+
+" make the file explorer look a little nicer
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 
 " =============================================================================
 " Code Folding
