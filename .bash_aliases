@@ -11,5 +11,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias c='xclip -selection clipboard'
 alias p='xclip -o -selection clipboard'
 
-# dirs
-www=/var/www
+# Get tmux and vim to play nicely
+alias tmux='TERM=screen-256color tmux'
+
