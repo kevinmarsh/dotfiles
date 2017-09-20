@@ -5,18 +5,21 @@
 ignore=~/.hgignore
 merge=internal:merge
 style= ~/dotfiles/hg_templates/map-cmdline.colorcompact
+interface = curses
 
 [extensions]
 color=
 graphlog=
 record=
-crecord=~/.hgext/crecord/
+shelve=
 rebase=
 hgext.mq=
-hgshelve=~/.hgext/hgshelve.py
 progress=
 pager=
 histedit=
+
+[experimental]
+crecord=TRUE
 
 [pager]
 pager=LESS='FSRX' less
