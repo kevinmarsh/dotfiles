@@ -14,3 +14,5 @@ alias p='xclip -o -selection clipboard'
 # Get tmux and vim to play nicely
 alias tmux='TERM=screen-256color tmux'
 
+# Quick mercurial update
+alias hglog='hg glog -l 12'
