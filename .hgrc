@@ -8,12 +8,11 @@ style= ~/dotfiles/hg_templates/map-cmdline.colorcompact
 interface = curses
 
 [extensions]
-color=
 graphlog=
 record=
 shelve=
+strip=
 rebase=
-hgext.mq=
 progress=
 pager=
 histedit=
@@ -24,6 +23,7 @@ crecord=TRUE
 [pager]
 pager=LESS='FSRX' less
 ignore=version, help, update, serve, record
+attend-ancestors = true
 
 [diff]
 git = 1
@@ -32,4 +32,5 @@ showfunc = 1
 
 [alias]
 secret=phase -fs
-draft=phase -d
+draft=phase -fd
+ancestors=glog --rev "reverse(ancestors(.))"
