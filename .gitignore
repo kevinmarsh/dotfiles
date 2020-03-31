@@ -14,5 +14,7 @@ Session.vim
 *.sublime-workspace
 *.sublime-project
 
-.sass-cache
 *.pyc
+*/__pycache__/*
+*/.mypy_cache/*
+*/.sass-cache/*

@@ -26,7 +26,7 @@
 	glog = !"git glogall -7"
 
 [push]
-	default = simple
+	default = current
 
 [pager]
 	status = true
