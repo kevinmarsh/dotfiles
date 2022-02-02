@@ -1,0 +1,11 @@
+*.css   diff=css
+*.html  diff=html
+*.xhtml diff=html
+*.go    diff=golang
+*.py    diff=python
+*.md    diff=markdown
+*.rs    diff=rust
+
+# package lockfiles
+poetry.lock -diff linguist-generated=true
+package-lock.json -diff linguist-generated=true

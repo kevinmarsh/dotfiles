@@ -5,6 +5,7 @@
 *.rej
 *.orig
 *.swp
+*.lock
 
 # vim undo file
 *.un~
@@ -18,3 +19,8 @@ Session.vim
 */__pycache__/*
 */.mypy_cache/*
 */.sass-cache/*
+
+*.egg-info/
+.python-version
+*pyproject.toml
+.venv/*
