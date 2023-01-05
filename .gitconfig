@@ -18,6 +18,9 @@
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 
+[init]
+	defaultBranch = main
+
 [alias]
 	diffcache = diff --cached
 	outgoing = log --graph @{u}..
@@ -26,8 +29,15 @@
 	glogall = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 	glog = !"git glogall -7"
 
+	# Show all unpushed branches from https://stackoverflow.com/a/48180899
+	unpushed = log --branches --not --remotes --no-walk --decorate --oneline
+
+	# Get the latest (local) tag from https://stackoverflow.com/a/4277828
+	# latest_tag = "git describe --tags $(git rev-list --tags --max-count=1)"
+
 [push]
 	default = current
+	autoSetupRemote = true
 
 [pager]
 	status = true
