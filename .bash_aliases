@@ -17,8 +17,13 @@ alias tmux='TERM=screen-256color tmux'
 # Quick mercurial update
 alias hglog='hg glog -l 12'
 
-# All in one apt update
-alias update='sudo apt update && sudo apt upgrade && sudo apt autoremove'
+# All in one apt/snap update
+alias update='(
+  sudo apt update &&
+  sudo apt upgrade &&
+  sudo apt autoremove &&
+  sudo snap refresh
+)'
 
 # Recursively remove all pyc files from current directory
 function pyclean() {
