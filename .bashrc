@@ -112,8 +112,8 @@ if [ -f $HOME/bin ]; then
 fi
 
 
-if [ -f ~/fabric-completion.bash ]; then
-	source ~/fabric-completion.bash
+if [ -f ~/dotfiles/.config/fabric-autocompletion.sh ]; then
+    source ~/dotfiles/.config/fabric-autocompletion.sh
 fi
 
 ################################################################################
@@ -141,3 +141,7 @@ fi
 if [ -f ~/.bashrc.private ]; then
     . ~/.bashrc.private
 fi
+
+# Created by `pipx` on 2023-01-04 04:18:52
+export PATH="$PATH:/home/kevin/.local/bin"
+eval "$(register-python-argcomplete pipx)"
