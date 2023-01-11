@@ -24,3 +24,6 @@ Session.vim
 .python-version
 *pyproject.toml
 .venv/*
+
+# asdf local versions
+.tool-versions
