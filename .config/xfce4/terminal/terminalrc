@@ -1,6 +1,5 @@
 [Configuration]
 BackgroundDarkness=0.930000
-BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 ColorBackground=#131926
 ColorBoldUseDefault=FALSE
 ColorCursor=#0f4999
